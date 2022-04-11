@@ -19,7 +19,7 @@
             <span>DashBoard </span>
         </h1>
 
-        <button>
+        <button @click="action">
             <span class="ham"> </span>
         </button>
     </header>
@@ -28,6 +28,9 @@
 <script>
 export default {
     name: "Header",
+    props: {
+        action: Function,
+    },
     data() {
         return {
             theme: "light",
@@ -41,13 +44,15 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 @import "../styles/mixins";
 @import "../styles/theme";
+
 header {
     width: 100%;
     background-color: rgb(245, 245, 245);
     height: 60px;
+    position: relative;
 
     @include flex-center;
     justify-content: space-around;
@@ -69,6 +74,7 @@ header {
         box-shadow: none;
         display: flex;
         padding: 10px;
+        z-index: 4;
         span.ham {
             width: 25px;
             border-top: 3px solid $main-color;

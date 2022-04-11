@@ -1,7 +1,8 @@
 <template>
-    <Header />
+    <Header :action="toggleSidebar" />
+    <SideBar :status="sidebar" />
     <main>
-        <button @click="spinLogo">Aperte aqui para o Logo</button>
+        <button @click="toggleSidebar">Aperte aqui para isdebar</button>
         <button
             @click="
                 () => {
@@ -20,14 +21,16 @@
 <script>
 import axiosInst from "./api";
 import Header from "./components/Header.vue";
-import Coins from "./data";
+import SideBar from "./components/SideBar.vue";
+import Data from "./data";
 
 export default {
-    components: { Header },
+    components: { Header, SideBar },
     name: "App",
     data() {
         return {
-            coins: Coins.coins,
+            coins: Data.coins,
+            sidebar: "hidden",
         };
     },
     methods: {
@@ -39,11 +42,17 @@ export default {
             });
             promise.catch((err) => console.log(err.response));
         },
+        toggleSidebar() {
+            this.sidebar = this.sidebar === "hidden" ? "show" : "hidden";
+        },
     },
 };
 </script>
 
 <style lang="scss">
+@import "./styles/mixins";
+@import "./styles/theme";
+
 * {
     box-sizing: border-box;
 }
