@@ -6,8 +6,11 @@ export default {
         "cardano",
         "ripple",
         "dogecoin",
-        "shiba-inu",
+        "solana",
         "litecoin",
         "matic-network",
+        "terra-luna",
+        "binancecoin",
+        "polkadot",
     ],
 };

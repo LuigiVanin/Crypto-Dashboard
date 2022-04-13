@@ -1,6 +1,6 @@
 <template>
     <header>
-        <button @click="toggleTheme">
+        <button class="theme" @click="toggleTheme">
             <ion-icon
                 class="theme"
                 name="radio-button-off-outline"
@@ -20,7 +20,7 @@
         </h1>
 
         <button @click="action">
-            <span class="ham"> </span>
+            <span :class="['ham', sidebar]"> </span>
         </button>
     </header>
 </template>
@@ -30,6 +30,7 @@ export default {
     name: "Header",
     props: {
         action: Function,
+        sidebar: String,
     },
     data() {
         return {
@@ -50,7 +51,7 @@ export default {
 
 header {
     width: 100%;
-    background-color: rgb(245, 245, 245);
+    background-color: $lighter-bg-color;
     height: 60px;
     position: relative;
 
@@ -75,8 +76,14 @@ header {
         display: flex;
         padding: 10px;
         z-index: 4;
+
+        &.theme {
+            padding-block: 7px;
+        }
+
         span.ham {
             width: 25px;
+            transition: transform 0.7s ease-in-out;
             border-top: 3px solid $main-color;
 
             &::after,
@@ -90,6 +97,18 @@ header {
                 transition: 0.3s;
                 position: relative;
             }
+
+            &.show {
+                /* background: black; */
+                border-top: 3px solid transparent;
+
+                &::before {
+                    transform: rotate(45deg);
+                }
+                &::after {
+                    transform: rotate(-45deg) translate(5px, -5px);
+                }
+            }
         }
 
         ion-icon.theme {
@@ -97,6 +116,17 @@ header {
             --ionicon-stroke-width: 46px;
             color: $main-color;
         }
+    }
+    &::before {
+        content: "";
+        position: absolute;
+        right: 0px;
+        bottom: 0px;
+        width: 288px;
+        height: 15px;
+        z-index: 3;
+
+        background: $lighter-bg-color;
     }
 }
 </style>

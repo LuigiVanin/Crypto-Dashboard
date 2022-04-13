@@ -32,17 +32,5 @@ aside {
     &.show {
         right: 0px;
     }
-
-    &::before {
-        content: "";
-        position: absolute;
-        left: -15px;
-        right: 0;
-        top: -15px;
-        height: 15px;
-        z-index: 2;
-
-        background: rgb(245, 245, 245);
-    }
 }
 </style>
