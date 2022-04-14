@@ -4,6 +4,24 @@
             <img :src="tk.image.small" :alt="tk.symbol" />
         </div>
         <div class="token__info">
+            <h1>
+                <span>
+                    {{ tk.name }}
+                    <span class="price-change">
+                        <ion-icon
+                            v-if="
+                                tk.market_data.price_change_percentage_24h > 0
+                            "
+                            name="caret-up-outline"
+                            class="up"
+                        ></ion-icon>
+                        <ion-icon
+                            v-else
+                            name="caret-down-outline"
+                            class="down"
+                        ></ion-icon> </span
+                ></span>
+            </h1>
             <p>
                 ${{ format(tk.market_data.current_price.usd) }}
                 <span>USD</span>
@@ -14,6 +32,7 @@
 
 <script>
 import { valueFormatter } from "../utils";
+import { useTokenStore } from "../store/tokenStore";
 
 export default {
     name: "TokenBox",
@@ -22,13 +41,17 @@ export default {
             type: Object,
         },
     },
+    setup() {
+        const store = useTokenStore();
+
+        return {
+            store,
+        };
+    },
     methods: {
         format(value) {
             return valueFormatter(value);
         },
-    },
-    mounted() {
-        console.log("hello");
     },
 };
 </script>
@@ -40,31 +63,60 @@ export default {
 .token {
     width: 225px;
     background: $lighter-bg-color;
-    padding: 10px;
+    padding: 15px;
     border-radius: 5px;
-    margin-bottom: 10px;
-
+    margin-bottom: 20px;
+    box-shadow: $bar-shadow;
+    cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    transition: all 0.3s ease-in-out;
+
+    &:hover {
+        box-shadow: 0 0 3px 0px $main-color;
+    }
+
+    span.price-change {
+        position: absolute;
+        right: -19px;
+        top: 0;
+        ion-icon {
+            font-size: 19px;
+            &.up {
+                color: $main-color;
+            }
+            &.down {
+                top: 0px;
+                color: rgb(255, 71, 71);
+            }
+        }
+    }
 
     &__info {
-        height: 70px;
+        height: 65px;
         width: 130px;
-        /* background: $main-color; */
         display: flex;
         flex-direction: column;
         justify-content: center;
+        gap: 7px;
+        padding-bottom: 10px;
 
         h1 {
-            font-size: 15px;
-            text-align: center;
+            position: relative;
+            font-size: 16px;
             font-weight: bold;
+            text-align: center;
+
+            span {
+                position: relative;
+            }
         }
 
         p {
-            text-align: center;
+            text-align: right;
             font-size: 24px;
+            font-weight: 300;
             span {
                 font-size: 11px;
                 text-decoration: underline;
@@ -75,14 +127,20 @@ export default {
 
     .token__img {
         @include flex-center;
-        width: 70px;
-        height: 75px;
+        width: 68px;
+        height: 63px;
         border-radius: 5px;
         background-color: $image-bg-color;
 
         img {
             height: 45px;
         }
+    }
+}
+
+@media screen and (max-width: 425px) {
+    .token {
+        margin-bottom: 5px;
     }
 }
 </style>

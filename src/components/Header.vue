@@ -58,7 +58,6 @@ header {
     @include flex-center;
     justify-content: space-around;
     box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.295);
-    margin-bottom: 35px;
 
     h1 {
         font-size: 24px;
@@ -127,6 +126,12 @@ header {
         z-index: 3;
 
         background: $lighter-bg-color;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    header h1 span {
+        display: none;
     }
 }
 </style>

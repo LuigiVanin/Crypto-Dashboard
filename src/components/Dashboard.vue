@@ -57,7 +57,13 @@ export default {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: space-evenly;
-    background: $main-color;
+    justify-content: space-between;
+}
+
+@media screen and (max-width: 760px) {
+    .tokens-dashboard {
+        gap: 25px;
+        justify-content: center;
+    }
 }
 </style>

@@ -3,6 +3,7 @@
     <SideBar :status="sidebar" />
     <main>
         <div class="container">
+            <MainPainel />
             <DashBoard :tokens="coins" />
         </div>
     </main>
@@ -13,10 +14,11 @@ import axiosInst from "./api";
 import Header from "./components/Header.vue";
 import SideBar from "./components/SideBar.vue";
 import DashBoard from "./components/Dashboard.vue";
+import MainPainel from "./components/MainPainel.vue";
 import Data from "./data";
 
 export default {
-    components: { Header, SideBar, DashBoard },
+    components: { Header, SideBar, DashBoard, MainPainel },
     name: "App",
     data() {
         return {
@@ -63,7 +65,6 @@ body {
 main {
     flex-direction: column;
     width: 100%;
-    background: red;
 
     .container {
         display: flex;
@@ -75,5 +76,13 @@ main {
 
 button {
     @include button;
+}
+
+@media screen and (max-width: 760px) {
+    main {
+        .container {
+            width: 100%;
+        }
+    }
 }
 </style>
