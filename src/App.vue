@@ -1,6 +1,6 @@
 <template>
     <Header :action="toggleSidebar" :sidebar="sidebar" />
-    <SideBar :status="sidebar" />
+    <SideBar :status="sidebar" :toggle="toggleSidebar" />
     <main>
         <div class="container">
             <MainPainel />

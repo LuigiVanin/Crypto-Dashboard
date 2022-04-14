@@ -1,5 +1,9 @@
 <template>
-    <div class="token">
+    <div
+        class="token"
+        @click="selectToken"
+        :class="tk.name === store.name ? 'selected' : ''"
+    >
         <div class="token__img">
             <img :src="tk.image.small" :alt="tk.symbol" />
         </div>
@@ -24,6 +28,7 @@
             </h1>
             <p>
                 ${{ format(tk.market_data.current_price.usd) }}
+
                 <span>USD</span>
             </p>
         </div>
@@ -52,6 +57,10 @@ export default {
         format(value) {
             return valueFormatter(value);
         },
+        selectToken() {
+            console.log(this.store.name, this.tk.name);
+            this.store.selectDirectly(this.tk);
+        },
     },
 };
 </script>
@@ -77,6 +86,10 @@ export default {
         box-shadow: 0 0 3px 0px $main-color;
     }
 
+    &.selected {
+        box-shadow: 0 0 2px 3px $main-color;
+    }
+
     span.price-change {
         position: absolute;
         right: -19px;
@@ -87,7 +100,7 @@ export default {
                 color: $main-color;
             }
             &.down {
-                top: 0px;
+                top: -5px;
                 color: rgb(255, 71, 71);
             }
         }

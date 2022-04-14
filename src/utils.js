@@ -1,5 +1,7 @@
 export function valueFormatter(number) {
-    if (number > 1000 && number.toFixed(1) % 1 > 0) {
+    if (number > 10000) {
+        return parseInt(number).toLocaleString();
+    } else if (number > 1000 && number.toFixed(1) % 1 > 0) {
         number = number.toFixed(1);
     } else if (number < 1) {
         number = number.toFixed(4);
@@ -9,4 +11,6 @@ export function valueFormatter(number) {
     return value;
 }
 
-console.log(valueFormatter(4000));
+export function objectIsEmpty(obj) {
+    return Object.keys(obj).length === 0;
+}

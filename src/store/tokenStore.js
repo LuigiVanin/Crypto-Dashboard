@@ -1,4 +1,5 @@
 import { defineStore } from "pinia";
+import { objectIsEmpty } from "../utils";
 import axiosInst from "../api";
 
 export const useTokenStore = defineStore("token", {
@@ -34,6 +35,34 @@ export const useTokenStore = defineStore("token", {
                 return "nada ainda";
             }
             return state.selectedToken.data.market_data.current_price.usd;
+        },
+        name: (state) => {
+            return state.selectedToken.name;
+        },
+        marketCap: (state) => {
+            if (objectIsEmpty(state.selectedToken.data)) {
+                return "nothing to see here";
+            }
+            return state.selectedToken.data.market_data.market_cap.usd;
+        },
+        rank: (state) => {
+            if (objectIsEmpty(state.selectedToken.data)) {
+                return "nothing to see here";
+            }
+            return state.selectedToken.data.market_cap_rank;
+        },
+        image: (state) => {
+            if (objectIsEmpty(state.selectedToken.data)) {
+                return "nothing to see here";
+            }
+            return state.selectedToken.data.image.thumb;
+        },
+        changePercentage: (state) => {
+            if (objectIsEmpty(state.selectedToken.data)) {
+                return "nothing to see here";
+            }
+            return state.selectedToken.data.market_data
+                .price_change_percentage_24h;
         },
     },
 });
