@@ -8,22 +8,46 @@
             </h1>
         </div>
 
-        <div class="price">
-            <h1 class="tag">
-                Price<span class="currency">(USD)</span>:
-                <span class="price-tag">
-                    ${{ String(store.currentPrice).replace(".", ",") }}
-                </span>
-                <span
-                    :class="[
-                        'time-delta',
-                        store.changePercentage < 0 ? 'neg' : 'pos',
-                    ]"
-                >
-                    ({{ store.changePercentage > 0 ? "+" : ""
-                    }}{{ store.changePercentage }}%)<span>24h</span>
-                </span>
-            </h1>
+        <div class="main-painel__info">
+            <div class="price">
+                <h1 class="tag">
+                    Price<span class="currency">(USD)</span>:
+                    <span class="value-tag">
+                        ${{ String(store.currentPrice).replace(".", ",") }}
+                    </span>
+                    <span
+                        :class="[
+                            'value-delta',
+                            store.changePercentage < 0 ? 'neg' : 'pos',
+                        ]"
+                        >{{ "" }}({{ store.changePercentage > 0 ? "+" : ""
+                        }}{{
+                            store.changePercentage.toFixed(4).replace(".", ",")
+                        }}%)<span>24h</span>
+                    </span>
+                </h1>
+            </div>
+
+            <div class="market-cap">
+                <h1 class="tag">
+                    Market Cap<span class="currency">(USD)</span> :
+                    <span class="value-tag">
+                        ${{ parseInt(store.marketCap).toLocaleString() }}
+                    </span>
+                </h1>
+            </div>
+
+            <div class="market-cap">
+                <h1 class="tag">
+                    ATH<span class="currency">(USD)</span> :
+                    <span class="value-tag"> ${{ store.ath.value }} </span>
+                    <span class="value-delta neg"
+                        >({{
+                            store.ath.valueChange.toFixed(4).replace(".", ",")
+                        }}%)</span
+                    >
+                </h1>
+            </div>
         </div>
     </div>
 </template>
@@ -66,6 +90,7 @@ export default {
     margin-block: 35px;
     padding-block: 20px;
     padding-inline: 25px;
+    overflow: hidden;
 
     .top {
         width: 100%;
@@ -90,40 +115,53 @@ export default {
         }
     }
 
-    .price {
-        margin-top: 20px;
-        width: 100%;
+    &__info {
+        padding-inline: 15px;
+        height: calc(100% - 40px - 25px - 15px);
         display: flex;
-        align-items: flex-end;
-        padding-inline: 10px;
-        h1.tag {
-            font-size: 24px;
+        flex-direction: column;
+        justify-content: space-between;
+        /* background: $main-color; */
 
+        h1.tag {
+            font-size: 20px;
             color: rgb(78, 78, 78);
             span.currency {
                 font-size: 14px;
             }
-            span.price-tag {
+
+            span.value-tag {
                 color: black;
-                font-size: 28px;
+                font-size: 25px;
             }
 
-            .time-delta {
+            .value-delta {
                 margin-left: 5px;
-                font-size: 28px;
+                font-size: 26px;
                 font-weight: 500;
+                color: rgb(252, 86, 86);
+            }
+        }
 
-                &.pos {
-                    color: $main-color;
-                }
+        .price {
+            width: 100%;
+            display: flex;
+            align-items: flex-end;
 
-                &.neg {
-                    color: rgb(252, 86, 86);
-                }
+            h1.tag {
+                .value-delta {
+                    &.pos {
+                        color: $main-color;
+                    }
 
-                span {
-                    font-size: 17px;
-                    font-weight: 300;
+                    &.neg {
+                        color: rgb(252, 86, 86);
+                    }
+
+                    span {
+                        font-size: 17px;
+                        font-weight: 300;
+                    }
                 }
             }
         }

@@ -34,7 +34,7 @@ export const useTokenStore = defineStore("token", {
             if (state.selectedToken.data.market_data === undefined) {
                 return "nada ainda";
             }
-            return state.selectedToken.data.market_data.current_price.usd;
+            return state.selectedToken.data.market_data.current_price["usd"];
         },
         name: (state) => {
             return state.selectedToken.name;
@@ -43,7 +43,7 @@ export const useTokenStore = defineStore("token", {
             if (objectIsEmpty(state.selectedToken.data)) {
                 return "nothing to see here";
             }
-            return state.selectedToken.data.market_data.market_cap.usd;
+            return state.selectedToken.data.market_data.market_cap["usd"];
         },
         rank: (state) => {
             if (objectIsEmpty(state.selectedToken.data)) {
@@ -59,10 +59,23 @@ export const useTokenStore = defineStore("token", {
         },
         changePercentage: (state) => {
             if (objectIsEmpty(state.selectedToken.data)) {
-                return "nothing to see here";
+                return 0;
             }
             return state.selectedToken.data.market_data
                 .price_change_percentage_24h;
+        },
+
+        ath: (state) => {
+            if (objectIsEmpty(state.selectedToken.data)) {
+                return { value: 0, valueChange: 0 };
+            }
+            return {
+                value: state.selectedToken.data.market_data.ath["usd"],
+                valueChange:
+                    state.selectedToken.data.market_data.ath_change_percentage[
+                        "usd"
+                    ],
+            };
         },
     },
 });

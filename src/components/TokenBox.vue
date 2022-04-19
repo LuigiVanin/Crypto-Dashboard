@@ -74,7 +74,7 @@ export default {
     background: $lighter-bg-color;
     padding: 15px;
     border-radius: 5px;
-    margin-bottom: 20px;
+    /* margin-bottom: 20px; */
     box-shadow: $bar-shadow;
     cursor: pointer;
     display: flex;
@@ -153,7 +153,10 @@ export default {
 
 @media screen and (max-width: 425px) {
     .token {
-        margin-bottom: 5px;
+        /* margin-bottom: 5px; */
+        padding-block: 25px;
+        width: 100%;
+        padding-inline: 45px;
     }
 }
 </style>

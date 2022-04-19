@@ -58,12 +58,13 @@ export default {
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-between;
+    gap: 25px;
 }
 
 @media screen and (max-width: 760px) {
     .tokens-dashboard {
-        gap: 25px;
-        justify-content: center;
+        justify-content: space-around;
+        gap: 15px;
     }
 }
 </style>

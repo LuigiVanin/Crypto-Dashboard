@@ -64,6 +64,7 @@ body {
 
 main {
     flex-direction: column;
+    padding-block: 60px;
     width: 100%;
 
     .container {
