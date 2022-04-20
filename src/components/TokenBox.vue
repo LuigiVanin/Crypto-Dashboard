@@ -58,7 +58,6 @@ export default {
             return valueFormatter(value);
         },
         selectToken() {
-            console.log(this.store.name, this.tk.name);
             this.store.selectDirectly(this.tk);
         },
     },

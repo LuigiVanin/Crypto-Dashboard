@@ -1,10 +1,9 @@
 <template>
-    <div class="main-painel" @click="test">
+    <div class="main-painel">
         <div class="top">
             <img :src="store.image" alt="test" />
             <h1 class="name">
-                {{ store.name }}
-                <span> (rank: #{{ store.rank }}) </span>
+                {{ store.name }}<span>(#{{ store.rank }}) </span>
             </h1>
         </div>
 
@@ -74,6 +73,9 @@ export default {
     created() {
         this.store.select("bitcoin");
     },
+    updated() {
+        this.$emit("painel-update");
+    },
 };
 </script>
 
@@ -108,7 +110,7 @@ export default {
             padding-top: 3px;
             font-size: 28px;
             span {
-                font-size: 18px;
+                font-size: 20px;
                 font-weight: bold;
                 color: rgb(167, 167, 167);
             }
@@ -163,6 +165,33 @@ export default {
                         font-weight: 300;
                     }
                 }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 455px) {
+    .main-painel {
+        height: 320px;
+        position: relative;
+        padding-block: 35px;
+        border-radius: 0px;
+        .top {
+            justify-content: center;
+
+            h1.name span {
+                margin: auto;
+            }
+        }
+
+        &__info {
+            padding-inline: 0;
+        }
+        h1.tag {
+            .value-delta,
+            .value-tag {
+                font-size: 22px;
+                margin-inline: auto;
             }
         }
     }

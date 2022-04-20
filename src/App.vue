@@ -1,16 +1,15 @@
 <template>
     <Header :action="toggleSidebar" :sidebar="sidebar" />
     <SideBar :status="sidebar" :toggle="toggleSidebar" :tokens="coins" />
-    <main>
+    <main ref="top">
         <div class="container">
-            <MainPainel />
+            <MainPainel @painel-update="scrollMe" />
             <DashBoard :tokens="coins" />
         </div>
     </main>
 </template>
 
 <script>
-import axiosInst from "./api";
 import Header from "./components/Header.vue";
 import SideBar from "./components/SideBar.vue";
 import DashBoard from "./components/Dashboard.vue";
@@ -20,6 +19,7 @@ import Data from "./data";
 export default {
     components: { Header, SideBar, DashBoard, MainPainel },
     name: "App",
+    emits: ["painel-update"],
     data() {
         return {
             coins: Data.coins,
@@ -27,16 +27,11 @@ export default {
         };
     },
     methods: {
-        getCrypto(name) {
-            const promise = axiosInst.get(`coins/${name}`);
-
-            promise.then((response) => {
-                console.log(response.data);
-            });
-            promise.catch((err) => console.log(err.response));
-        },
         toggleSidebar() {
             this.sidebar = this.sidebar === "hidden" ? "show" : "hidden";
+        },
+        scrollMe() {
+            this.$refs.top.scrollIntoView();
         },
     },
 };

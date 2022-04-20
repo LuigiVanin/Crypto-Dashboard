@@ -4,12 +4,12 @@
             <ion-icon
                 class="theme"
                 name="radio-button-off-outline"
-                v-if="theme === 'light'"
+                v-if="theme.getTheme === 'light'"
             ></ion-icon>
             <ion-icon
                 class="theme"
                 name="radio-button-on-outline"
-                v-else-if="theme === 'dark'"
+                v-else-if="theme.getTheme === 'dark'"
             ></ion-icon>
         </button>
 
@@ -26,20 +26,25 @@
 </template>
 
 <script>
+import { useThemeStore } from "../store/themeStore";
+
 export default {
     name: "Header",
     props: {
         action: Function,
         sidebar: String,
     },
-    data() {
+    setup() {
+        const theme = useThemeStore();
+
         return {
-            theme: "light",
+            theme,
         };
     },
     methods: {
         toggleTheme() {
-            this.theme = this.theme === "light" ? "dark" : "light";
+            console.log(this.theme.getTheme);
+            this.theme.toggle();
         },
     },
 };

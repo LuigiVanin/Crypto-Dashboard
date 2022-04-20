@@ -9,7 +9,6 @@ export const useTokenStore = defineStore("token", {
                 name: "placeholder",
                 data: {},
             },
-            teste: "teste",
         };
     },
     actions: {
@@ -24,12 +23,8 @@ export const useTokenStore = defineStore("token", {
             this.selectedToken.name = data.name;
             this.selectedToken.data = data;
         },
-        changeTeste(something) {
-            this.teste = `has changed: ${something}`;
-        },
     },
     getters: {
-        getTeste: (state) => `teste:${state.teste}`,
         currentPrice: (state) => {
             if (state.selectedToken.data.market_data === undefined) {
                 return "nada ainda";
