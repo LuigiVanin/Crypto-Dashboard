@@ -12,5 +12,11 @@ export default {
         "terra-luna",
         "binancecoin",
         "polkadot",
+        "01coin",
+        "usd-coin",
+        "avalanche-2",
+        "cosmos",
+        "stellar",
+        "pancakeswap-token",
     ],
 };

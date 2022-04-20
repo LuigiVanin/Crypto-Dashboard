@@ -81,6 +81,8 @@ export default {
     align-items: center;
     justify-content: space-between;
     transition: all 0.3s ease-in-out;
+    position: relative;
+    z-index: 1;
 
     &:hover {
         box-shadow: 0 0 3px 0px $main-color;

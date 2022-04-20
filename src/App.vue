@@ -1,6 +1,6 @@
 <template>
     <Header :action="toggleSidebar" :sidebar="sidebar" />
-    <SideBar :status="sidebar" :toggle="toggleSidebar" />
+    <SideBar :status="sidebar" :toggle="toggleSidebar" :tokens="coins" />
     <main>
         <div class="container">
             <MainPainel />

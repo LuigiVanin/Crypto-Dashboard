@@ -3,6 +3,9 @@
         <div v-for="token of tokensData" :key="token">
             <TokenBox :tk="token" />
         </div>
+        <button v-show="limits < tokens.length" @click="getAllTokens">
+            <ion-icon name="chevron-down"></ion-icon>
+        </button>
     </div>
 </template>
 
@@ -14,6 +17,7 @@ export default {
     data() {
         return {
             tokensData: [],
+            limits: 0,
         };
     },
     name: "Dashboard",
@@ -35,9 +39,14 @@ export default {
         },
 
         getAllTokens() {
-            for (const token of this.tokens) {
-                this.getToken(token);
+            let stop = this.limits + 12;
+            if (stop > this.tokens.length) {
+                stop = this.tokens.length;
             }
+            for (let i = this.limits; i < stop; i++) {
+                this.getToken(this.tokens[i]);
+            }
+            this.limits = stop;
         },
     },
     created() {
@@ -59,6 +68,26 @@ export default {
     flex-wrap: wrap;
     justify-content: space-between;
     gap: 25px;
+    position: relative;
+    z-index: 1;
+    padding-bottom: 15px;
+
+    button {
+        position: absolute;
+        left: calc(50% - 22px);
+        bottom: -45px;
+        height: 45px;
+        width: 45px;
+        border-radius: 50%;
+        box-shadow: $bar-shadow;
+        @include flex-center;
+
+        ion-icon {
+            padding-top: 2px;
+            color: black;
+            --ionicon-stroke-width: 46px;
+        }
+    }
 }
 
 @media screen and (max-width: 760px) {
