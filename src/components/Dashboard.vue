@@ -74,50 +74,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../styles/mixins";
-@import "../styles/theme";
-
-.tokens-dashboard {
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    gap: 25px;
-    position: relative;
-    z-index: 1;
-    padding-bottom: 15px;
-
-    transition: all 0.5s ease-in-out;
-
-    button {
-        position: absolute;
-        left: calc(50% - 22px);
-        bottom: -45px;
-        height: 45px;
-        width: 45px;
-        border-radius: 50%;
-        box-shadow: $bar-shadow;
-        @include flex-center;
-        &.dark {
-            background: $dark-bag-color;
-
-            ion-icon {
-                color: $light-bg-color;
-            }
-        }
-        ion-icon {
-            padding-top: 2px;
-            color: black;
-            --ionicon-stroke-width: 46px;
-        }
-    }
-}
-
-@media screen and (max-width: 760px) {
-    .tokens-dashboard {
-        justify-content: space-around;
-        gap: 15px;
-    }
-}
+@import "../styles/partials/dashboard";
 </style>
