@@ -94,7 +94,7 @@ aside {
     z-index: 2;
     top: 60px;
     bottom: 0px;
-    background: $side-bar-bg;
+    background: $main-color;
     box-shadow: $bar-shadow;
     transition: all 0.4s ease-in-out;
     padding-top: 25px;

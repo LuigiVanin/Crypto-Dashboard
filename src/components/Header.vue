@@ -1,5 +1,5 @@
 <template>
-    <header>
+    <header :class="theme.getTheme">
         <button class="theme" @click="toggleTheme">
             <ion-icon
                 class="theme"
@@ -56,7 +56,6 @@ export default {
 
 header {
     width: 100%;
-    background-color: $lighter-bg-color;
     height: 60px;
     position: relative;
     position: fixed;
@@ -64,6 +63,13 @@ header {
     right: 0;
     top: 0;
     z-index: 2;
+
+    &.light {
+        background-color: $lighter-bg-color;
+    }
+    &.dark {
+        background-color: $dark-bag-color;
+    }
 
     @include flex-center;
     justify-content: space-around;
@@ -85,6 +91,7 @@ header {
         display: flex;
         padding: 10px;
         z-index: 4;
+        background-color: rgba(0, 0, 0, 0.041);
 
         &.theme {
             padding-block: 7px;
@@ -134,8 +141,12 @@ header {
         width: 288px;
         height: 15px;
         z-index: 3;
-
+    }
+    &.light::before {
         background: $lighter-bg-color;
+    }
+    &.dark::before {
+        background: $dark-bag-color;
     }
 }
 

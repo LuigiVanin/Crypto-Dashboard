@@ -11,6 +11,14 @@ export function valueFormatter(number) {
     return value;
 }
 
+export function valueFormatterEasy(value) {
+    if (value > 1000) {
+        return value.toLocaleString();
+    } else {
+        return String(value).replace(".", ",");
+    }
+}
+
 export function objectIsEmpty(obj) {
     return Object.keys(obj).length === 0;
 }

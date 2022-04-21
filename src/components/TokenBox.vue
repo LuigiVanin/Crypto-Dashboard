@@ -2,7 +2,7 @@
     <div
         class="token"
         @click="selectToken"
-        :class="tk.name === store.name ? 'selected' : ''"
+        :class="[tk.name === store.name ? 'selected' : '', theme.getTheme]"
     >
         <div class="token__img">
             <img :src="tk.image.small" :alt="tk.symbol" />
@@ -27,9 +27,7 @@
                 ></span>
             </h1>
             <p>
-                ${{ format(tk.market_data.current_price.usd) }}
-
-                <span>USD</span>
+                ${{ format(tk.market_data.current_price.usd) }}<span>USD</span>
             </p>
         </div>
     </div>
@@ -38,6 +36,7 @@
 <script>
 import { valueFormatter } from "../utils";
 import { useTokenStore } from "../store/tokenStore";
+import { useThemeStore } from "../store/themeStore";
 
 export default {
     name: "TokenBox",
@@ -48,9 +47,11 @@ export default {
     },
     setup() {
         const store = useTokenStore();
+        const theme = useThemeStore();
 
         return {
             store,
+            theme,
         };
     },
     methods: {
@@ -82,6 +83,24 @@ export default {
     transition: all 0.3s ease-in-out;
     position: relative;
     z-index: 1;
+
+    &.light {
+        background: $lighter-bg-color;
+    }
+
+    &.dark {
+        background: $dark-bag-color;
+        .token__info h1 span {
+            color: $lighter-bg-color;
+        }
+
+        p {
+            color: $lighter-bg-color;
+            span {
+                color: white;
+            }
+        }
+    }
 
     &:hover {
         box-shadow: 0 0 3px 0px $main-color;

@@ -1,7 +1,7 @@
 <template>
     <Header :action="toggleSidebar" :sidebar="sidebar" />
     <SideBar :status="sidebar" :toggle="toggleSidebar" :tokens="coins" />
-    <main ref="top">
+    <main ref="top" :class="theme.getTheme">
         <div class="container">
             <MainPainel @painel-update="scrollMe" />
             <DashBoard :tokens="coins" />
@@ -15,11 +15,19 @@ import SideBar from "./components/SideBar.vue";
 import DashBoard from "./components/Dashboard.vue";
 import MainPainel from "./components/MainPainel.vue";
 import Data from "./data";
+import { useThemeStore } from "./store/themeStore";
 
 export default {
     components: { Header, SideBar, DashBoard, MainPainel },
     name: "App",
     emits: ["painel-update"],
+    setup() {
+        const theme = useThemeStore();
+
+        return {
+            theme,
+        };
+    },
     data() {
         return {
             coins: Data.coins,
@@ -49,7 +57,7 @@ body {
     min-height: 100vh;
     position: relative;
     width: 100%;
-    background-color: $light-bg-color;
+    /* background-color: $light-bg-color; */
     font-family: "Poppins", sans-serif;
 }
 
@@ -61,6 +69,14 @@ main {
     flex-direction: column;
     padding-block: 60px;
     width: 100%;
+    min-height: 100vh;
+
+    &.light {
+        background-color: $light-bg-color;
+    }
+    &.dark {
+        background-color: $darker-bg-color;
+    }
 
     .container {
         display: flex;
