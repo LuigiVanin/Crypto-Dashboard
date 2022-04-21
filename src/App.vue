@@ -3,8 +3,8 @@
     <SideBar :status="sidebar" :toggle="toggleSidebar" :tokens="coins" />
     <main ref="top" :class="theme.getTheme">
         <div class="container">
-            <MainPainel @painel-update="scrollMe" />
-            <DashBoard :tokens="coins" />
+            <MainPainel />
+            <DashBoard :tokens="coins" @painel-update="scrollMe" />
         </div>
     </main>
 </template>
@@ -70,6 +70,7 @@ main {
     padding-block: 60px;
     width: 100%;
     min-height: 100vh;
+    transition: all 0.3s ease-in-out;
 
     &.light {
         background-color: $light-bg-color;

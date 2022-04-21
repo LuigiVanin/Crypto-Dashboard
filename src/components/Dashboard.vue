@@ -1,9 +1,16 @@
 <template>
     <div class="tokens-dashboard">
         <div v-for="token of tokensData" :key="token">
-            <TokenBox :tk="token" />
+            <TokenBox
+                :tk="token"
+                @painel-update="() => $emit('painel-update')"
+            />
         </div>
-        <button v-show="limits < tokens.length" @click="getAllTokens">
+        <button
+            v-show="limits < tokens.length"
+            @click="getAllTokens"
+            :class="theme.getTheme"
+        >
             <ion-icon name="chevron-down"></ion-icon>
         </button>
     </div>
@@ -11,6 +18,7 @@
 
 <script>
 import axiosInst from "../api";
+import { useThemeStore } from "../store/themeStore";
 import TokenBox from "./TokenBox.vue";
 
 export default {
@@ -21,10 +29,18 @@ export default {
         };
     },
     name: "Dashboard",
+    emits: ["painel-update"],
     props: {
         tokens: {
             type: Array,
         },
+    },
+    setup() {
+        const theme = useThemeStore();
+
+        return {
+            theme,
+        };
     },
     components: { TokenBox },
     methods: {
@@ -72,6 +88,8 @@ export default {
     z-index: 1;
     padding-bottom: 15px;
 
+    transition: all 0.5s ease-in-out;
+
     button {
         position: absolute;
         left: calc(50% - 22px);
@@ -81,7 +99,13 @@ export default {
         border-radius: 50%;
         box-shadow: $bar-shadow;
         @include flex-center;
+        &.dark {
+            background: $dark-bag-color;
 
+            ion-icon {
+                color: $light-bg-color;
+            }
+        }
         ion-icon {
             padding-top: 2px;
             color: black;
