@@ -5,11 +5,14 @@
 
 </p>
 
+<h2 align="center">
 <a href="https://crypto-dashboard-nine.vercel.app/">
-        <h3 p align="center">
-            Acessar Demostração🚀
-        </h2>
+        
+Acessar Demostração🚀
+
 </a>
+
+</h2>
 
 ## Descrição 📎
 
@@ -23,13 +26,13 @@ Crypto Dashboard é uma aplicação web para visualização de valor atual, capi
     -   [x] Acessar API do Gecko Coin
     -   [x] Deploy público via Vercel
     -   [x] Temas claro e escuro alternável
-    -   [] Armazenar tema no local Storage
+    -   [ ] Armazenar tema no local Storage
 
 ## Ferramentas Utilizadas ⚙️
 
 <p align="center">
-<img src="https://img.shields.io/badge/Vue.js-35495E?style=for-the-badge&logo=vue.js&logoColor=4FC08D"/>
-<img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" />
-<img src="https://img.shields.io/badge/Sass-CC6699?style=for-the-badge&logo=sass&logoColor=white" />
-<img src="https://img.shields.io/badge/Git-E34F26?style=for-the-badge&logo=git&logoColor=white" />
+    <img src="https://img.shields.io/badge/Vue.js-35495E?style=for-the-badge&logo=vue.js&logoColor=4FC08D"/>
+    <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" />
+    <img src="https://img.shields.io/badge/Sass-CC6699?style=for-the-badge&logo=sass&logoColor=white" />
+    <img src="https://img.shields.io/badge/Git-E34F26?style=for-the-badge&logo=git&logoColor=white" />
 </p>
