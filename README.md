@@ -1,11 +1,11 @@
-<h1 align="center"> Crypto Dashboard </h1>
+<h1 align="center"> Crypto Dashboard 📈</h1>
 
 <p align="center">
-<img src="./images/mockup.png"/>
+<img src="./images/mockup2.png"/>
 
 </p>
 
-<a href="">
+<a href="https://crypto-dashboard-nine.vercel.app/">
         <h3 p align="center">
             Acessar Demostração🚀
         </h2>
@@ -14,10 +14,16 @@
 ## Descrição 📎
 
 <p>
-Crypto Dashboard é uma aplicação web para visualização de valor atual, capitalização de mercado, valor máximo e variação de preço de crypto moedas 🪙. Para adicionar moedas ao projetos basta realizar uma PR para o arquivo de <a href="./src/data.js">dados</a> adicionado o id do token de acordo com <a href="https://www.coingecko.com/pt">Gecko Coin</a>
+Crypto Dashboard é uma aplicação web para visualização de valor atual, capitalização de mercado, valor máximo e variação de preço de crypto moedas. Para adicionar moedas ao projetos basta realizar uma PR para o arquivo de <a href="./src/data.js">dados</a> adicionado o id do token de acordo com <a href="https://www.coingecko.com/pt">Gecko Coin</a>
 </p>
 
-## Features 🏁
+## Funcionalidades 🏁
+
+-   Global
+    -   [x] Acessar API do Gecko Coin
+    -   [x] Deploy público via Vercel
+    -   [x] Temas claro e escuro alternável
+    -   [] Armazenar tema no local Storage
 
 ## Ferramentas Utilizadas ⚙️
 
