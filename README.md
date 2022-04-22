@@ -76,7 +76,7 @@ Crypto Dashboard é uma aplicação web para visualização de valor atual, capi
     <img src="https://img.shields.io/badge/Vercel-100000?style=for-the-badge&logo=vercel&logoColor=white" />
 </p>
 
-<p align="center">
+## Entre em contato
 
 [![LinkedIn][linkedin-shield]][linkedin-url]
 [![Gmail][gmail-shield]][gmail-link]
